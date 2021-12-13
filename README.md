@@ -1,6 +1,6 @@
 # agostinho-lopes-front
 
-Este projeto foi inicializado com [create-next-app](https://github.com/next/create-next-app).
+Este projeto foi inicializado com [create-next-app](https://github.com/vercel/create-next-app).
 
 # Dependências
 
