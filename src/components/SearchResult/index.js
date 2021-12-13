@@ -16,7 +16,7 @@ import { useFetch } from '@utils/useFetch'
 // }
 
 export const SearchResult = ({ textQuery, ...props }) => {
-  const [num, setNum] = useState (5)
+  const [limit, setLimit] = useState (5)
   const [showLoading, setShowLoading] = useState (false)
   const { data: musicList, error } = useFetch (`musics/autocomplete/${textQuery}`)
   
@@ -24,7 +24,7 @@ export const SearchResult = ({ textQuery, ...props }) => {
     setShowLoading (true)
     setTimeout (() => {
       setShowLoading (false)
-      setNum (num + 5)
+      setLimit (limit + 5)
     }, 1500)
   }
 
@@ -46,7 +46,7 @@ export const SearchResult = ({ textQuery, ...props }) => {
     <Container>
       <MusicList>
         <MusicListBody>
-          {musicList.map (music => (
+          {musicList.slice (0, limit).map (music => (
             <Music 
               key={music.id} 
               href="#"
@@ -61,7 +61,9 @@ export const SearchResult = ({ textQuery, ...props }) => {
         </MusicListBody>
       </MusicList>
       <LoadingProgress show={showLoading} />
-      <ViewMoreButton onClick={handleViewMore} />
+      {musicList.length > limit && (
+        <ViewMoreButton onClick={handleViewMore} />
+      )}
     </Container>
   )
 }

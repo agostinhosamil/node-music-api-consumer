@@ -32,7 +32,7 @@ export const ModalBody = styled.div`
 export const ModalTitle = styled.h2`
   font-size: 43px;
   letter-spacing: -2px;
-  font-weight: 100;
+  font-weight: 300;
 `
 
 export const ModalDescription = styled.p`

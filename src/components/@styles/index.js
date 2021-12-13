@@ -20,7 +20,7 @@ export const GlobalStyles = createGlobalStyle`
 		-webkit-user-select: none;
 		-moz-user-select: none;
 		-ms-user-select: none;
-		font-family: "Trebuchet MS";
+		font-family: 'Source Sans Pro', sans-serif;
 	}
 
 	ul, ol, li {
