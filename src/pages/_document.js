@@ -1,28 +1,29 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
+import config from '../config'
 
 export default class ApplicationDocument extends Document {
-  static async getInitialProps (context) {
+  static async getInitialProps(context) {
     const stylesheet = new ServerStyleSheet()
     const originalContextRenderPage = context.renderPage
 
     try {
       context.renderPage = () => originalContextRenderPage(
-        { 
+        {
           enhanceApp: App => props => stylesheet.collectStyles(
-            <App {...props} /> 
-          ) 
+            <App {...props} />
+          )
         }
       )
 
-      const initialProps = await Document.getInitialProps (context)
+      const initialProps = await Document.getInitialProps(context)
 
       return {
         ...initialProps,
         styles: (
           <>
-            { initialProps.styles }
-            { stylesheet.getStyleElement() }
+            {initialProps.styles}
+            {stylesheet.getStyleElement()}
           </>
         )
       }
@@ -31,7 +32,7 @@ export default class ApplicationDocument extends Document {
     }
   }
 
-  render () {
+  render() {
     return (
       <Html>
         <Head>
@@ -46,4 +47,4 @@ export default class ApplicationDocument extends Document {
       </Html>
     )
   }
- }
+}
